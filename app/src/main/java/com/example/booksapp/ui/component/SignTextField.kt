@@ -36,9 +36,13 @@ import com.example.booksapp.R
 
 @Composable
 fun SignTextField(
-    modifier: Modifier = Modifier, hint: String, icon: Painter, isPasswordField: Boolean = false
+    modifier: Modifier = Modifier,
+    hint: String,
+    icon: Painter,
+    isPasswordField: Boolean = false,
+    value: String,
+    onValueChange: (String) -> Unit
 ) {
-    var value by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(!isPasswordField) }
     Row(
         modifier = modifier
@@ -53,7 +57,7 @@ fun SignTextField(
     ) {
         TextField(
             value = value,
-            onValueChange = { value = it },
+            onValueChange = onValueChange,
             singleLine = true,
             visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
             textStyle = MaterialTheme.typography.bodySmall,
@@ -89,7 +93,7 @@ fun SignTextField(
                 colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.tertiary),
                 modifier = if (!isPasswordField) Modifier
                     .padding(end = 16.dp)
-                    .clickable { value = "" } else Modifier
+                    .clickable { onValueChange("") } else Modifier
                     .padding(end = 16.dp)
                     .clickable { passwordVisible = !passwordVisible })
         }
@@ -97,8 +101,8 @@ fun SignTextField(
     }
 }
 
-@Preview
-@Composable
-fun SignTextFieldPreview() {
-    SignTextField(hint = "Электронная почта", icon = painterResource(R.drawable.cross_icon))
-}
+//@Preview
+//@Composable
+//fun SignTextFieldPreview() {
+//    SignTextField(hint = "Электронная почта", icon = painterResource(R.drawable.cross_icon))
+//}

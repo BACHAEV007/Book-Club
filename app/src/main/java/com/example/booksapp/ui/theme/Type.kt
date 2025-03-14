@@ -20,6 +20,7 @@ val Alumni = FontFamily(
 )
 val VelaSans = FontFamily(
     Font(R.font.velasans_regular, weight = FontWeight.Normal),
+    Font(R.font.velasans_bold, weight = FontWeight.Bold),
 )
 
 val Georgia = FontFamily(
@@ -68,6 +69,13 @@ val Typography = Typography(
     bodySmall = TextStyle(
         fontFamily = VelaSans,
         fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        lineHeight = 18.2.sp,
+        letterSpacing = 0.sp,
+    ),
+    labelLarge = TextStyle(
+        fontFamily = VelaSans,
+        fontWeight = FontWeight.Bold,
         fontSize = 14.sp,
         lineHeight = 18.2.sp,
         letterSpacing = 0.sp,
