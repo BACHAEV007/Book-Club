@@ -38,7 +38,7 @@ import com.example.booksapp.ui.component.BooksCarousel
 import com.example.booksapp.ui.component.SignTextField
 
 @Composable
-fun SignInScreenContent(modifier: Modifier = Modifier) {
+fun SignInScreenContent(modifier: Modifier = Modifier, onEnterClick: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -85,7 +85,7 @@ fun SignInScreenContent(modifier: Modifier = Modifier) {
                 )
                 Spacer(modifier = Modifier.size(24.dp))
                 Button(
-                    onClick = {},
+                    onClick = onEnterClick,
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(size = 100.dp),
                     contentPadding = PaddingValues(vertical = 15.dp),
@@ -112,5 +112,5 @@ fun SignInScreenContent(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 fun SignInScreenContentPreview() {
-    SignInScreenContent()
+    SignInScreenContent(onEnterClick = {})
 }
