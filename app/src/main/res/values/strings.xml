@@ -8,4 +8,6 @@
     <string name="library">Библиотека</string>
     <string name="new_books">Новинки</string>
     <string name="popular_books">Популярные книги</string>
+    <string name="search_books">Поиск по книгам</string>
+    <string name="last_query">Недавние запросы</string>
 </resources>

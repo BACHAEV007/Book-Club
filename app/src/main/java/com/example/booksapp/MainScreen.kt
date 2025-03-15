@@ -14,6 +14,7 @@ import androidx.navigation.compose.composable
 import com.example.booksapp.screen.LibraryScreen
 import com.example.booksapp.screen.SignInScreen
 import com.example.booksapp.ui.LibraryScreenContent
+import com.example.booksapp.ui.SearchScreenContent
 import com.example.booksapp.ui.SignInScreenContent
 
 
@@ -31,7 +32,7 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
             })
         }
         composable<LibraryScreen> {
-            LibraryScreenContent(modifier = modifier.fillMaxSize().padding(horizontal = 16.dp))
+            SearchScreenContent(modifier = modifier.fillMaxSize().padding(horizontal = 16.dp))
         }
     }
 }
