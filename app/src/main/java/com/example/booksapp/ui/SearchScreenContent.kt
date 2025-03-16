@@ -20,6 +20,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -58,6 +59,10 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.booksapp.R
 import com.example.booksapp.data.bookList
+import com.example.booksapp.data.searchScreenData
+import com.example.booksapp.ui.component.AuthorItem
+import com.example.booksapp.ui.component.FilterItem
+import com.example.booksapp.ui.component.LastQueryItem
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalGlideComposeApi::class)
 @Composable
@@ -94,7 +99,10 @@ fun SearchScreenContent(modifier: Modifier = Modifier) {
                                 R.drawable.back_search_ic
                             ),
                             contentDescription = null,
-                            tint = if (!expanded) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.primary
+                            tint = if (!expanded) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.primary,
+                            modifier = if (expanded) Modifier.clickable {
+                                expanded = false
+                            } else Modifier
                         )
                     },
                     trailingIcon = {
@@ -190,12 +198,39 @@ fun SearchScreenContent(modifier: Modifier = Modifier) {
                         color = MaterialTheme.colorScheme.primary
                     )
                 }
+                items(searchScreenData.filter, span = { GridItemSpan(2) }) {
+                    LastQueryItem(query = it)
+                }
+                item(span = { GridItemSpan(2) }) {
+                    Text(
+                        text = stringResource(R.string.genres).uppercase(),
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
+                    )
+                }
+
+                items(searchScreenData.genres) {
+                    FilterItem(modifier = Modifier, text = it)
+                }
+                item(span = { GridItemSpan(2) }) {
+                    Text(
+                        text = stringResource(R.string.author).uppercase(),
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
+                    )
+                }
+                items(searchScreenData.authors, span = { GridItemSpan(2) }) {
+                    AuthorItem(author = it)
+                }
             }
         }
     }
-
-
 }
+
+
+
 
 
 @Preview

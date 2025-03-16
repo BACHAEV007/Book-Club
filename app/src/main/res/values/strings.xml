@@ -10,4 +10,6 @@
     <string name="popular_books">Популярные книги</string>
     <string name="search_books">Поиск по книгам</string>
     <string name="last_query">Недавние запросы</string>
+    <string name="genres">Жанры</string>
+    <string name="author">Авторы</string>
 </resources>
