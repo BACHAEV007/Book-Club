@@ -63,6 +63,7 @@ import com.example.booksapp.data.searchScreenData
 import com.example.booksapp.ui.component.AuthorItem
 import com.example.booksapp.ui.component.FilterItem
 import com.example.booksapp.ui.component.LastQueryItem
+import com.example.booksapp.ui.component.SearchBookItem
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalGlideComposeApi::class)
 @Composable
@@ -151,36 +152,7 @@ fun SearchScreenContent(modifier: Modifier = Modifier) {
                     Spacer(modifier = Modifier)
                 }
                 items(bookList) { book ->
-                    Row(modifier = Modifier.fillMaxWidth()) {
-                        GlideImage(
-                            model = book.imageUrl,
-                            contentDescription = null,
-                            modifier = Modifier
-                                .weight(0.28f)
-                                .fillMaxHeight()
-                                .clip(RoundedCornerShape(size = 4.dp)),
-                            contentScale = ContentScale.Fit
-                        ) {
-                            it.placeholder(R.drawable.cross_icon)
-                        }
-                        Column(
-                            modifier = Modifier
-                                .weight(1f)
-                                .padding(start = 16.dp)
-                                .align(Alignment.CenterVertically)
-                        ) {
-                            Text(
-                                text = book.title,
-                                style = MaterialTheme.typography.headlineMedium,
-                                color = MaterialTheme.colorScheme.primary
-                            )
-                            Text(
-                                text = book.author,
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.primary
-                            )
-                        }
-                    }
+                    SearchBookItem(modifier = Modifier, book = book)
                 }
             }
         }

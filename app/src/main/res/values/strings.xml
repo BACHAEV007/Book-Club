@@ -12,4 +12,8 @@
     <string name="last_query">Недавние запросы</string>
     <string name="genres">Жанры</string>
     <string name="author">Авторы</string>
+    <string name="bookmarks">Закладки</string>
+    <string name="reading_now">Читаете сейчас</string>
+    <string name="favorites_books">Избранные книги</string>
+    <string name="Quotes">Цитаты</string>
 </resources>

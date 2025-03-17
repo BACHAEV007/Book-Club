@@ -41,9 +41,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.booksapp.screen.BookmarksScreen
 import com.example.booksapp.screen.LibraryScreen
 import com.example.booksapp.screen.SearchScreen
 import com.example.booksapp.screen.SignInScreen
+import com.example.booksapp.ui.BookmarksScreenContent
 import com.example.booksapp.ui.LibraryScreenContent
 import com.example.booksapp.ui.SearchScreenContent
 import com.example.booksapp.ui.SignInScreenContent
@@ -60,7 +62,8 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
         floatingActionButton = {
             if (currentRoute in listOf(
                     "com.example.booksapp.screen.LibraryScreen",
-                    "com.example.booksapp.screen.SearchScreen"
+                    "com.example.booksapp.screen.SearchScreen",
+                    "com.example.booksapp.screen.BookmarksScreen"
                 )
             ) {
                 Box(
@@ -92,7 +95,8 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
         bottomBar = {
             if (currentRoute in listOf(
                     "com.example.booksapp.screen.LibraryScreen",
-                    "com.example.booksapp.screen.SearchScreen"
+                    "com.example.booksapp.screen.SearchScreen",
+                    "com.example.booksapp.screen.BookmarksScreen"
                 )
             ) {
                 Box(
@@ -107,6 +111,7 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                     when (currentRoute) {
                         "com.example.booksapp.screen.LibraryScreen",
                         "com.example.booksapp.screen.SearchScreen",
+                        "com.example.booksapp.screen.BookmarksScreen"
                             -> {
                             CustomBottomBar(
                                 selectedIndex = selectedIndex,
@@ -115,6 +120,7 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                                     when (newIndex) {
                                         0 -> navController.navigate(LibraryScreen)
                                         1 -> navController.navigate(SearchScreen)
+                                        3 -> navController.navigate(BookmarksScreen)
                                     }
                                 }
                             )
@@ -146,6 +152,13 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                 }
                 composable<SearchScreen> {
                     SearchScreenContent(
+                        modifier = modifier
+                            .fillMaxSize()
+                            .padding(horizontal = 16.dp)
+                    )
+                }
+                composable<BookmarksScreen> {
+                    BookmarksScreenContent(
                         modifier = modifier
                             .fillMaxSize()
                             .padding(horizontal = 16.dp)
