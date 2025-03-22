@@ -58,6 +58,13 @@ val Typography = Typography(
         lineHeight = 20.8.sp,
         letterSpacing = 0.sp,
     ),
+    bodySmall = TextStyle(
+        fontFamily = VelaSans,
+        fontWeight = FontWeight.Medium,
+        fontSize = 16.sp,
+        lineHeight = 20.8.sp,
+        letterSpacing = 0.sp,
+    ),
     bodyMedium = TextStyle(
         fontFamily = Georgia,
         fontWeight = FontWeight.Medium,
@@ -66,11 +73,11 @@ val Typography = Typography(
         lineHeight = 20.8.sp,
         letterSpacing = 0.sp,
     ),
-    bodySmall = TextStyle(
+    titleMedium = TextStyle(
         fontFamily = VelaSans,
-        fontWeight = FontWeight.Normal,
-        fontSize = 14.sp,
-        lineHeight = 18.2.sp,
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp,
+        lineHeight = 20.8.sp,
         letterSpacing = 0.sp,
     ),
     labelLarge = TextStyle(

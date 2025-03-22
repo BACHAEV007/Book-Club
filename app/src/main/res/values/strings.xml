@@ -16,4 +16,6 @@
     <string name="reading_now">Читаете сейчас</string>
     <string name="favorites_books">Избранные книги</string>
     <string name="Quotes">Цитаты</string>
+    <string name="have_read">Прочитано</string>
+    <string name="tables">Оглавление</string>
 </resources>

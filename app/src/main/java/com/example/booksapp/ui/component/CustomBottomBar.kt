@@ -71,7 +71,7 @@ fun CustomBottomBar(
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
-                        .weight(1f)
+
                         .clickable { onItemSelected(index) },
                 ) {
                     Icon(
