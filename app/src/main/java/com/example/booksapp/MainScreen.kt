@@ -52,11 +52,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.booksapp.screen.BookDetailScreen
 import com.example.booksapp.screen.BookmarksScreen
+import com.example.booksapp.screen.ChapterScreen
 import com.example.booksapp.screen.LibraryScreen
 import com.example.booksapp.screen.SearchScreen
 import com.example.booksapp.screen.SignInScreen
 import com.example.booksapp.ui.BookDetailsContent
 import com.example.booksapp.ui.BookmarksScreenContent
+import com.example.booksapp.ui.ChapterScreenContent
 import com.example.booksapp.ui.LibraryScreenContent
 import com.example.booksapp.ui.SearchScreenContent
 import com.example.booksapp.ui.SignInScreenContent
@@ -192,8 +194,15 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                         modifier = modifier
                             .fillMaxSize().offset(y = -statusBarHeight),
                         onBackClick = { navController.popBackStack() },
-                        onStageClick = { },
+                        onStageClick = { navController.navigate(ChapterScreen)},
                         topBarPadding = statusBarHeight
+                    )
+                }
+                composable<ChapterScreen> {
+                    ChapterScreenContent(
+                        modifier = modifier
+                            .fillMaxSize(),
+                        onBackClick = { navController.popBackStack() },
                     )
                 }
             }

@@ -57,6 +57,7 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.example.booksapp.R
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.offset
+import androidx.compose.ui.res.stringResource
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -74,7 +75,8 @@ fun BookDetailHeader(
     var imageHeight by remember { mutableStateOf(0.dp) }
     Box(modifier = modifier
         .fillMaxWidth()
-        .wrapContentHeight().onGloballyPositioned { coordinates ->
+        .wrapContentHeight()
+        .onGloballyPositioned { coordinates ->
             parentHeight = with(density) { coordinates.size.height.toDp() }
             boxParentHeight = parentHeight + 24.dp
         }) {
@@ -82,7 +84,8 @@ fun BookDetailHeader(
             model = image,
             contentDescription = null,
             modifier = Modifier
-                .aspectRatio(412f / 380f).onGloballyPositioned { coordinates ->
+                .aspectRatio(412f / 380f)
+                .onGloballyPositioned { coordinates ->
                     imageHeight = with(density) { coordinates.size.height.toDp() }
                 }
                 .fillMaxWidth(),
@@ -106,7 +109,8 @@ fun BookDetailHeader(
         )
         Box(
             modifier = Modifier
-                .fillMaxWidth().height(imageHeight + 24.dp)
+                .fillMaxWidth()
+                .height(imageHeight + 24.dp)
         ) {
             IconButton(
                 onClick = onBackClick,
@@ -125,10 +129,13 @@ fun BookDetailHeader(
                     contentDescription = null
                 )
             }
-            Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).align(Alignment.BottomCenter), horizontalArrangement = Arrangement.spacedBy(8.dp)){
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .align(Alignment.BottomCenter), horizontalArrangement = Arrangement.spacedBy(8.dp)){
                 Button(
-                    onClick = { },
-                    colors =ButtonColors(
+                    onClick = {onReadClick(1)},
+                    colors = ButtonColors(
                         contentColor = MaterialTheme.colorScheme.surface,
                         containerColor = MaterialTheme.colorScheme.primary,
                         disabledContentColor = MaterialTheme.colorScheme.surface,
@@ -147,7 +154,7 @@ fun BookDetailHeader(
                         modifier = Modifier.size(18.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("Читать", style = MaterialTheme.typography.labelLarge)
+                    Text(stringResource(R.string.to_read), style = MaterialTheme.typography.labelLarge)
                 }
                 Button(
                     onClick = { },
@@ -170,7 +177,7 @@ fun BookDetailHeader(
                         modifier = Modifier.size(18.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("В избранное", style = MaterialTheme.typography.labelLarge)
+                    Text(text = stringResource(R.string.to_favorite), style = MaterialTheme.typography.labelLarge)
                 }
             }
         }

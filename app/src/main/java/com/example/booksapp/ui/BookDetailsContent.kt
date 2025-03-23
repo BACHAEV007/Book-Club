@@ -38,7 +38,7 @@ import com.example.booksapp.ui.component.BookDetailsDescription
 import com.example.booksapp.ui.component.StagesContent
 
 @Composable
-fun BookDetailsContent(
+fun  BookDetailsContent(
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
     onStageClick: (Int) -> Unit,

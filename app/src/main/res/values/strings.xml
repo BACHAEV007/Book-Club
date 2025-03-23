@@ -18,4 +18,6 @@
     <string name="Quotes">Цитаты</string>
     <string name="have_read">Прочитано</string>
     <string name="tables">Оглавление</string>
+    <string name="to_read">Читать</string>
+    <string name="to_favorite">В избранное</string>
 </resources>
