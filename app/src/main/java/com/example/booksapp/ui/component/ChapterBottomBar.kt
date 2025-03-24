@@ -1,5 +1,6 @@
 package com.example.booksapp.ui.component
 
+import android.media.Image.Plane
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -32,7 +33,8 @@ fun ChapterBottomBar(
     onStagesClick: () -> Unit,
     onForwardClick: () -> Unit,
     onSettingsClick: () -> Unit,
-    onPlayClick: () -> Unit
+    onPlayClick: () -> Unit,
+    isPlay: Boolean = false
 ) {
     Row(
         modifier = modifier
@@ -81,13 +83,13 @@ fun ChapterBottomBar(
 
         FloatingActionButton(
             onClick = onPlayClick,
-            containerColor = MaterialTheme.colorScheme.primary,
-            contentColor = MaterialTheme.colorScheme.tertiary,
+            containerColor = MaterialTheme.colorScheme.tertiary,
+            contentColor = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(top = 12.dp, bottom = 12.dp, end = 16.dp),
             elevation = FloatingActionButtonDefaults.elevation(0.dp),
         ) {
             Icon(
-                painter = painterResource(R.drawable.play_icon),
+                painter = if (isPlay) painterResource(R.drawable.pause_ic) else painterResource(R.drawable.play_icon),
                 contentDescription = null
             )
         }
