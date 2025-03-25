@@ -24,7 +24,7 @@ import com.example.booksapp.ui.component.ReadingNowRow
 import com.example.booksapp.ui.component.SearchBookItem
 
 @Composable
-fun BookmarksScreenContent(modifier: Modifier = Modifier) {
+fun BookmarksScreenContent(modifier: Modifier = Modifier, onBookClick: () -> Unit, onReadNowClick:() -> Unit) {
     LazyColumn(modifier = modifier.padding(top = 24.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         item {
             Text(
@@ -34,7 +34,7 @@ fun BookmarksScreenContent(modifier: Modifier = Modifier) {
             )
         }
         item {
-            ReadingNowRow(modifier = Modifier, onClick = {})
+            ReadingNowRow(modifier = Modifier, onClick = onReadNowClick)
         }
         items(bookList.subList(4, 5)) {
             ReadingNowBookItem(modifier = Modifier, it, detailsData.percent, detailsData.stages[detailsData.currentStageIndex].name)
@@ -48,7 +48,7 @@ fun BookmarksScreenContent(modifier: Modifier = Modifier) {
             )
         }
         items(bookList.subList(2, 5)) {
-            SearchBookItem(modifier = Modifier, it)
+            SearchBookItem(modifier = Modifier, it, onBookClick = onBookClick)
         }
         item {
             Text(
@@ -70,5 +70,5 @@ fun BookmarksScreenContent(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 fun BookmarksScreenContentPreview(){
-    BookmarksScreenContent()
+    BookmarksScreenContent(onBookClick = {}, onReadNowClick = {})
 }

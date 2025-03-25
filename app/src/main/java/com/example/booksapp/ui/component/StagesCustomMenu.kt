@@ -37,7 +37,8 @@ fun StagesCustomMenu(
     modifier: Modifier = Modifier,
     stages: List<Stage>,
     current: Int,
-    hideMenu: () -> Unit
+    hideMenu: () -> Unit,
+    onStageClick: (index: Int) -> Unit
 ) {
     val widthFraction = 320f / 412f
     Box(
@@ -107,6 +108,7 @@ fun StagesCustomMenu(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 13.5.dp, horizontal = 16.dp)
+                            .clickable { onStageClick(index) }
                     )
                 }
 

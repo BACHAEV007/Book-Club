@@ -1,20 +1,13 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.booksapp
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.util.Log
-import androidx.collection.mutableObjectIntMapOf
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.calculateEndPadding
-import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -22,8 +15,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -39,13 +30,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
-import androidx.navigation.NavController
-import androidx.navigation.NavGraph
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -71,6 +60,8 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
     var selectedIndex by remember { mutableStateOf(0) }
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+    val primaryColor = MaterialTheme.colorScheme.primary
+    val backgroundColor = MaterialTheme.colorScheme.background
     val window = LocalContext.current as? Activity
     LaunchedEffect(currentRoute) {
         window?.let { activity ->
@@ -80,7 +71,22 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                         "com.example.booksapp.screen.BookDetailScreen" -> false
                         else -> true
                     }
+                    controller.isAppearanceLightNavigationBars = when (currentRoute) {
+                        "com.example.booksapp.screen.SignInScreen" -> false
+                        "com.example.booksapp.screen.ChapterScreen" -> false
+                        else -> true
+                    }
                 }
+            activity.window.navigationBarColor = when (currentRoute) {
+                "com.example.booksapp.screen.SignInScreen" -> primaryColor.toArgb()
+                "com.example.booksapp.screen.ChapterScreen" -> primaryColor.toArgb()
+                else -> backgroundColor.toArgb()
+            }
+            activity.window.statusBarColor = when (currentRoute) {
+                "com.example.booksapp.screen.SignInScreen" -> primaryColor.toArgb()
+                else -> backgroundColor.toArgb()
+            }
+
         }
     }
     Scaffold(
@@ -98,7 +104,7 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
 
                 ) {
                     FloatingActionButton(
-                        onClick = { navController.navigate(BookDetailScreen) },
+                        onClick = { navController.navigate(ChapterScreen) },
                         modifier = Modifier
                             .size(80.dp)
                             .align(Alignment.BottomCenter)
@@ -158,7 +164,8 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                                                 inclusive = false
                                             }
                                         }
-                                        4 -> navController.navigate(SignInScreen){
+
+                                        4 -> navController.navigate(SignInScreen) {
                                             popUpTo(LibraryScreen) {
                                                 inclusive = true
                                             }
@@ -186,7 +193,6 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                             popUpTo(SignInScreen) {
                                 inclusive = true
                             }
-
                         }
                     })
                 }
@@ -194,21 +200,27 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                     LibraryScreenContent(
                         modifier = modifier
                             .fillMaxSize()
-                            .padding(horizontal = 16.dp)
+                            .padding(horizontal = 16.dp),
+                        onBookClick = {
+                            navController.navigate(BookDetailScreen)
+                        }
                     )
                 }
                 composable<SearchScreen> {
                     SearchScreenContent(
                         modifier = modifier
                             .fillMaxSize()
-                            .padding(horizontal = 16.dp)
+                            .padding(horizontal = 16.dp),
+                        onBookClick = { navController.navigate(BookDetailScreen) }
                     )
                 }
                 composable<BookmarksScreen> {
                     BookmarksScreenContent(
                         modifier = modifier
                             .fillMaxSize()
-                            .padding(horizontal = 16.dp)
+                            .padding(horizontal = 16.dp),
+                        onBookClick = { navController.navigate(BookDetailScreen) },
+                        onReadNowClick = {navController.navigate(ChapterScreen)}
                     )
                 }
                 composable<BookDetailScreen> {

@@ -219,7 +219,13 @@ fun ChapterScreenContent(modifier: Modifier = Modifier, onBackClick: () -> Unit)
                 modifier = Modifier,
                 detailsData.stages,
                 currentStageIndex,
-                hideMenu = { isStageMenuVisible = !isStageMenuVisible }
+                hideMenu = { isStageMenuVisible = !isStageMenuVisible },
+                onStageClick = {
+                    currentStageIndex = it
+                    detailsData.currentStageIndex = it
+                    isPlay = false
+                    currentHighlightedIndex = -1
+                }
             )
         }
         if (isBottomSheetVisible) {

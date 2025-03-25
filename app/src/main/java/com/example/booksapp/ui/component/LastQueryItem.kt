@@ -1,6 +1,7 @@
 package com.example.booksapp.ui.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,13 +21,13 @@ import com.example.booksapp.R
 import com.example.booksapp.data.searchScreenData
 
 @Composable
-fun LastQueryItem(modifier: Modifier = Modifier, query: String) {
+fun LastQueryItem(modifier: Modifier = Modifier, query: String, onClick:() -> Unit) {
     Box(
         modifier = modifier
             .background(
                 color = MaterialTheme.colorScheme.tertiary,
                 shape = RoundedCornerShape(8.dp)
-            )
+            ).clickable { onClick() }
     ) {
         Row(
             modifier = modifier
@@ -47,7 +48,8 @@ fun LastQueryItem(modifier: Modifier = Modifier, query: String) {
                 modifier = Modifier
                     .weight(1f)
                     .padding(horizontal = 8.dp)
-                    .align(Alignment.CenterVertically)
+                    .align(Alignment.CenterVertically),
+                color = MaterialTheme.colorScheme.primary
             )
             Icon(
                 painter = painterResource(R.drawable.cross_search_ic),
@@ -59,8 +61,8 @@ fun LastQueryItem(modifier: Modifier = Modifier, query: String) {
 }
 
 
-@Preview
-@Composable
-fun LastQueryItemPreview() {
-    LastQueryItem(query = "IOS")
-}
+//@Preview
+//@Composable
+//fun LastQueryItemPreview() {
+//    LastQueryItem(query = "IOS")
+//}

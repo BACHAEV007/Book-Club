@@ -62,7 +62,7 @@ fun SignInScreenContent(modifier: Modifier = Modifier, onEnterClick: () -> Unit)
                     color = MaterialTheme.colorScheme.surface,
                     modifier = Modifier.offset(y = (16).dp)
                 )
-//                Spacer(modifier = Modifier.size(8.dp))
+
                 Text(
                     text = stringResource(R.string.book_world).uppercase(),
                     style = MaterialTheme.typography.titleLarge,

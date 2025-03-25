@@ -1,5 +1,6 @@
 package com.example.booksapp.ui.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -24,8 +25,8 @@ import com.example.booksapp.data.Book
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun BookLibraryItem(modifier: Modifier = Modifier, book: Book) {
-    Column (modifier = modifier){
+fun BookLibraryItem(modifier: Modifier = Modifier, book: Book, onBookClick: () -> Unit) {
+    Column (modifier = modifier.clickable { onBookClick() }){
         GlideImage(
             model = book.imageUrl,
             contentDescription = null,
