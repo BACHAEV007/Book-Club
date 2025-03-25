@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
@@ -38,10 +39,18 @@ import kotlinx.serialization.Serializable
 
 @Composable
 fun CustomBottomBar(
-    selectedIndex: Int,
+    currentRoute: String,
     onItemSelected: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val routeToIndex = mapOf(
+        "com.example.booksapp.screen.LibraryScreen" to 0,
+        "com.example.booksapp.screen.SearchScreen" to 1,
+        "com.example.booksapp.screen.BookmarksScreen" to 3
+    )
+
+
+    val selectedIndex = routeToIndex[currentRoute] ?: 0
     BottomAppBar(
         modifier = modifier
             .fillMaxWidth()
@@ -70,7 +79,8 @@ fun CustomBottomBar(
             icons.forEachIndexed { index, iconRes ->
                 Box(
                     contentAlignment = Alignment.Center,
-                    modifier = Modifier
+                    modifier = Modifier.size(48.dp)
+                        .clip(CircleShape)
 
                         .clickable { onItemSelected(index) },
                 ) {
@@ -86,8 +96,8 @@ fun CustomBottomBar(
     }
 }
 
-@Preview
-@Composable
-fun CustomBottomBarPreview() {
-    CustomBottomBar(selectedIndex = 0, onItemSelected = {})
-}
+//@Preview
+//@Composable
+//fun CustomBottomBarPreview() {
+//    CustomBottomBar(selectedIndex = 0, onItemSelected = {})
+//}

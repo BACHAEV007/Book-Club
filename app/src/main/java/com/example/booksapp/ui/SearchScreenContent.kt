@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
@@ -123,7 +124,7 @@ fun SearchScreenContent(modifier: Modifier = Modifier) {
                             shape = RoundedCornerShape(52.dp)
                         )
                         .padding(
-                            start = 16.dp, top = 4.dp, bottom = 4.dp, end = 4.dp
+                            start = 16.dp, end = 4.dp
                         ) else Modifier.padding(
                         start = 4.dp, end = 4.dp
                     ),
@@ -153,6 +154,9 @@ fun SearchScreenContent(modifier: Modifier = Modifier) {
                 }
                 items(bookList) { book ->
                     SearchBookItem(modifier = Modifier, book = book)
+                }
+                item {
+                    Spacer(modifier = Modifier.size(112.dp))
                 }
             }
         }
@@ -195,6 +199,9 @@ fun SearchScreenContent(modifier: Modifier = Modifier) {
                 }
                 items(searchScreenData.authors, span = { GridItemSpan(2) }) {
                     AuthorItem(author = it)
+                }
+                item(span = { GridItemSpan(2) }) {
+                    Spacer(modifier = Modifier.size(112.dp))
                 }
             }
         }

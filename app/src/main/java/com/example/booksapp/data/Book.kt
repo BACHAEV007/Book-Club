@@ -4,51 +4,51 @@ data class Book(val imageUrl: String, val author: String, val description: Strin
 
 val bookList = listOf(
     Book(
-        imageUrl = "https://s3-alpha-sig.figma.com/img/c116/1776/f4ccba0316c0050e9df514629488db9c?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=mIevTD7PDJuFx-wDyZmbp3oSLCCx4lQjiZ3xOqBTCtVLWM2vMX73~cgd9V3TafIPa3e75RwqJqrf5B4jESvF6whlDoi4QGotgdlMmQBw-rXV9NFlWOpeNDnh2H0KLNw7QOfn5gCzjrjw1g23LSbtwFd~RNyEiQ8hUigRicm3ZX1GIqeFDQtAkYZYOcNZK0qjey~aW8OK0dTSimojgHfo7uJcY-3p6PMHpoSXbtY0HC6F60td39FTqw0wKPLfwu7VB15A1mB8XE5jLxdrQ9-DUR0ZJKhXKgdDKWtWAGBbBNOF3VDfK4derSdrrq6PsgFvrRQF3PGqzDxKLmuUjzc56Q__",
+        imageUrl = "https://s3-alpha-sig.figma.com/img/c116/1776/f4ccba0316c0050e9df514629488db9c?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TOGnxrNDEB7uZTsMIfdFfUQI4SKJ0pnNQ9M6KsLCASQh1lQdBp9H3i52IwDRXsnxoFAN9~ynMo0sGlgXwZGe2yX74uY4AZueWHLIY5ya7yAywqLh7CNP6AdlHB7pDif60GTswoI-Kg2Ib3~22EFKqKbkIMB1UBxO~bSyw79e6DV9UevRybckFmlj1jXTrS8sGlYuEHhzIGiUng02mpkMugtfRGi7-e8hu98wUuaWLxvJBwDkvXTwcM6cH8vxtkl6TyRSquAuMJaWeGfJIJGRvKUvpvpaHkIURaAR~4X5xSEOilRoKHdBUB1X83ehj~wS0RBVPNyTWBIKq~A~beuryA__",
         author = "Фёдор Достоевский",
         description = "Роман о вине и искуплении молодого человека.",
         title = "Преступление и наказание"
 
     ),
     Book(
-        imageUrl = "https://s3-alpha-sig.figma.com/img/6c14/f05b/ceec55a32a17da7a6043413eb5b90676?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=aE-FtyOnXqk19kHSnshSRqhFyJElaiC6SdPyBk~Eu-DxqpzM6kORY3yp5K6ljUBmCnGteZ5Or5EHuXdARsZ94Rp37c5JFYzykMDJrmJTfOaNcuwx0JFf~UCsuM6dv4tzf31~v2IGRjKf4zpJ~pf379OUGnMoEZBg9ceRt8KgusO85p14gmJuYtkd~Sqz7EwgtJgHoSR--1DXK89ze~C4nFcjvNRichqZcU8zhJ75ZWlkmTQOQ1Z7oAPws49glaJBLHX5WfoOVCe3KtqO4q49Jb73uAhp3EVfDGq0kuhbwHHAY1AuQV44Xf7UNvx0H5stP1yJHlfcFekF4Yy1P1CNog__",
+        imageUrl = "https://s3-alpha-sig.figma.com/img/6c14/f05b/ceec55a32a17da7a6043413eb5b90676?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=oqvS~ltSFUThuh7XRM-LBgFlg0XfFeuAOeadNOOxx36oAkIdZbEFu5jPctFmaDAbtatjSZeQGjf6ibHaq36vl8hX~ljlcJ5oVnVULPIUCnqKOYIVUHUlnE0ab6ww4Stzv-JbHA7aLIYp6Zc4o~f-aC8SONLlvHk~yNJ0eqoCGgeaPUPAJ63-ff4iBm49Rds3VSpxGvX4jUdM0MFvUiZ2zT3Re5XydVSWKg7T~PYQ9VicBQ2K~KDziFtKVr9aLbeMoeTmV1igJm1wZ6uPxX0mhfZLFk1b~fVj4itjG-hYXWbnCVYtcWFlpF7ZtS9kBV6xz1JwbzFcERAZMDdxe6NCmA__",
         author = "Дэн Браун",
         description = "Триллер о разгадке тайны, связанной с кодом Леонардо да Винчи",
         title = "Код Да Винчи"
     ),
     Book(
-        imageUrl = "https://s3-alpha-sig.figma.com/img/0446/04bb/7b64749960fbad16e7a2f549e14daaed?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ImmKRJOOXFfjurUAymDY7ho3EY20cTUBkmR-bRKMK2EivawOI5yirqBxHRgWeg18UfUhhzAu3lWLX9wufDFWRiDDlfmzlYHWvVnh7~iZPOKI7N5jkshRDQ568-MTNxkuy72dQIR1eGqELq~bD4ofiTu3cJ3wkjVNJzgcDwHvITKPkTdY029YPpruTm-POD8gEzQ0RLZ6GvSTSo5FM0txP1FgdTxKPhVlE2X-aqLo8sYHM57fhvS5ObAuOjnjtk9mUwp3iPnO40~vEvhny2b3aJUQDRxgmXsu7bqbCTys9cl9-TNyGY1DtbBr2gS1qZzCMg6pOoq8Xt441c2ovEPlPg__",
+        imageUrl = "https://s3-alpha-sig.figma.com/img/0446/04bb/7b64749960fbad16e7a2f549e14daaed?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=EVfQpRpCAlLijAJcmGCqn843321J1L3h~L~ZZpMRK0rD0bDcqr5Akk2o9pj879eNVa0SWUTPCkhSgRGf2oDPqz1K5vombzVeirsIwwZwJOG6MV38aCeZMQtpPI~TkfrCEuhBfocmuEKaQqVIOBVQIRcsWHztqZAhcZx5Q9FJKTIt6g2qS41vnMERE0mBJh2DogKQFDk~qkDG6QCj7WWuamEFR56ox0-9XQxrV2FXw5Z-D7LqUIClYhPS6BvvFp9R0WhFXnzN6rUtyIi~Mt52IHdC0HgoEfsv1fCrETOW0Jn3AsbUVEb2DScR2XNPuK23jcDqb1fkrzJEgpvYKA-iPw__",
         author = "Эрик Мария Ремарк",
         description = "Сборник рассказов про трёх товарищей.",
         title = "Три товарища"
     ),
     Book(
-        imageUrl = "https://s3-alpha-sig.figma.com/img/13a3/129c/67c7feceb336f371fc34862b2b1a571c?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=rIJYttNP8Tjg73-BGk0R-VPXSx3wwhGXPGvLt3shdNpZwjJpxRH1ryRUzXrqC6EqkbrucFHLz1o0Q-ly3iVlOOFkmspASut-ubMxDCuLC2aYRIp1-T5t3uIUse0-iz2ORwk5ipBXXsnezEgX9FBbayhJNkEHEXWu6Ca153WdPva0O~IReKHWwVWL~pJkD1aU-hAcczSU7FgPNVCRZdfoY4Ty5BZvlR2y9i8rSwa09um8gkZs6Qm~0~duNM-GxZ2-6~lq6M~BBcglS3xii~FOowMVdzBu9Fx0HlVk64h9RPA~zuijPcSg5ShlywCVFeGwyBTuKmftfG03eqi~BWnqTQ__",
+        imageUrl = "https://s3-alpha-sig.figma.com/img/13a3/129c/67c7feceb336f371fc34862b2b1a571c?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=qyQPhdhSonryH8TyskKljykFLFRxTqnHne0pyLsG~Z4Ji3wQoXEvxxZIwSwVUJKHeVu26SVQbwF7csxps1oFegN5pumZUsmqPEYHbMWW4lJOOg3DuTcaM5YYEZUAR8gmCp9MF-mCz1Gx62-S3zwu9SkCK49BR1Iqbj~T2QA1d8Xl0BaD3uXeje1mQIRDC-DxjYVKUprfg5sHwrGILw9q-FmZVFR4uXeQfNtyQTLjMzrw~YXrxVJ98rQr8tP8YUKtDsxRGhdI6l5tEjzn-9eL~fkl4f6gg6OrmBzv3Iin5vSJxhI~JTLAMGgv6AoMGl8YO4oR0HPhrZLu3wjCUhnJEg__",
         author = "Михаил Булгаков",
         description = "Сатира с фантастикой о Москве.",
         title = "Мастер и Маргарита"
     ),
     Book(
-        imageUrl = "https://s3-alpha-sig.figma.com/img/c116/1776/f4ccba0316c0050e9df514629488db9c?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=mIevTD7PDJuFx-wDyZmbp3oSLCCx4lQjiZ3xOqBTCtVLWM2vMX73~cgd9V3TafIPa3e75RwqJqrf5B4jESvF6whlDoi4QGotgdlMmQBw-rXV9NFlWOpeNDnh2H0KLNw7QOfn5gCzjrjw1g23LSbtwFd~RNyEiQ8hUigRicm3ZX1GIqeFDQtAkYZYOcNZK0qjey~aW8OK0dTSimojgHfo7uJcY-3p6PMHpoSXbtY0HC6F60td39FTqw0wKPLfwu7VB15A1mB8XE5jLxdrQ9-DUR0ZJKhXKgdDKWtWAGBbBNOF3VDfK4derSdrrq6PsgFvrRQF3PGqzDxKLmuUjzc56Q__",
+        imageUrl = "https://s3-alpha-sig.figma.com/img/c116/1776/f4ccba0316c0050e9df514629488db9c?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=TOGnxrNDEB7uZTsMIfdFfUQI4SKJ0pnNQ9M6KsLCASQh1lQdBp9H3i52IwDRXsnxoFAN9~ynMo0sGlgXwZGe2yX74uY4AZueWHLIY5ya7yAywqLh7CNP6AdlHB7pDif60GTswoI-Kg2Ib3~22EFKqKbkIMB1UBxO~bSyw79e6DV9UevRybckFmlj1jXTrS8sGlYuEHhzIGiUng02mpkMugtfRGi7-e8hu98wUuaWLxvJBwDkvXTwcM6cH8vxtkl6TyRSquAuMJaWeGfJIJGRvKUvpvpaHkIURaAR~4X5xSEOilRoKHdBUB1X83ehj~wS0RBVPNyTWBIKq~A~beuryA__",
         author = "Фёдор Достоевский",
         description = "Роман о вине и искуплении молодого человека.",
         title = "Преступление и наказание"
 
     ),
     Book(
-        imageUrl = "https://s3-alpha-sig.figma.com/img/6c14/f05b/ceec55a32a17da7a6043413eb5b90676?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=aE-FtyOnXqk19kHSnshSRqhFyJElaiC6SdPyBk~Eu-DxqpzM6kORY3yp5K6ljUBmCnGteZ5Or5EHuXdARsZ94Rp37c5JFYzykMDJrmJTfOaNcuwx0JFf~UCsuM6dv4tzf31~v2IGRjKf4zpJ~pf379OUGnMoEZBg9ceRt8KgusO85p14gmJuYtkd~Sqz7EwgtJgHoSR--1DXK89ze~C4nFcjvNRichqZcU8zhJ75ZWlkmTQOQ1Z7oAPws49glaJBLHX5WfoOVCe3KtqO4q49Jb73uAhp3EVfDGq0kuhbwHHAY1AuQV44Xf7UNvx0H5stP1yJHlfcFekF4Yy1P1CNog__",
+        imageUrl = "https://s3-alpha-sig.figma.com/img/6c14/f05b/ceec55a32a17da7a6043413eb5b90676?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=oqvS~ltSFUThuh7XRM-LBgFlg0XfFeuAOeadNOOxx36oAkIdZbEFu5jPctFmaDAbtatjSZeQGjf6ibHaq36vl8hX~ljlcJ5oVnVULPIUCnqKOYIVUHUlnE0ab6ww4Stzv-JbHA7aLIYp6Zc4o~f-aC8SONLlvHk~yNJ0eqoCGgeaPUPAJ63-ff4iBm49Rds3VSpxGvX4jUdM0MFvUiZ2zT3Re5XydVSWKg7T~PYQ9VicBQ2K~KDziFtKVr9aLbeMoeTmV1igJm1wZ6uPxX0mhfZLFk1b~fVj4itjG-hYXWbnCVYtcWFlpF7ZtS9kBV6xz1JwbzFcERAZMDdxe6NCmA__",
         author = "Дэн Браун",
         description = "Триллер о разгадке тайны, связанной с кодом Леонардо да Винчи",
         title = "Код Да Винчи"
     ),
     Book(
-        imageUrl = "https://s3-alpha-sig.figma.com/img/0446/04bb/7b64749960fbad16e7a2f549e14daaed?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ImmKRJOOXFfjurUAymDY7ho3EY20cTUBkmR-bRKMK2EivawOI5yirqBxHRgWeg18UfUhhzAu3lWLX9wufDFWRiDDlfmzlYHWvVnh7~iZPOKI7N5jkshRDQ568-MTNxkuy72dQIR1eGqELq~bD4ofiTu3cJ3wkjVNJzgcDwHvITKPkTdY029YPpruTm-POD8gEzQ0RLZ6GvSTSo5FM0txP1FgdTxKPhVlE2X-aqLo8sYHM57fhvS5ObAuOjnjtk9mUwp3iPnO40~vEvhny2b3aJUQDRxgmXsu7bqbCTys9cl9-TNyGY1DtbBr2gS1qZzCMg6pOoq8Xt441c2ovEPlPg__",
+        imageUrl = "https://s3-alpha-sig.figma.com/img/0446/04bb/7b64749960fbad16e7a2f549e14daaed?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=EVfQpRpCAlLijAJcmGCqn843321J1L3h~L~ZZpMRK0rD0bDcqr5Akk2o9pj879eNVa0SWUTPCkhSgRGf2oDPqz1K5vombzVeirsIwwZwJOG6MV38aCeZMQtpPI~TkfrCEuhBfocmuEKaQqVIOBVQIRcsWHztqZAhcZx5Q9FJKTIt6g2qS41vnMERE0mBJh2DogKQFDk~qkDG6QCj7WWuamEFR56ox0-9XQxrV2FXw5Z-D7LqUIClYhPS6BvvFp9R0WhFXnzN6rUtyIi~Mt52IHdC0HgoEfsv1fCrETOW0Jn3AsbUVEb2DScR2XNPuK23jcDqb1fkrzJEgpvYKA-iPw__",
         author = "Эрик Мария Ремарк",
         description = "Сборник рассказов про трёх товарищей.",
         title = "Три товарища"
     ),
     Book(
-        imageUrl = "https://s3-alpha-sig.figma.com/img/13a3/129c/67c7feceb336f371fc34862b2b1a571c?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=rIJYttNP8Tjg73-BGk0R-VPXSx3wwhGXPGvLt3shdNpZwjJpxRH1ryRUzXrqC6EqkbrucFHLz1o0Q-ly3iVlOOFkmspASut-ubMxDCuLC2aYRIp1-T5t3uIUse0-iz2ORwk5ipBXXsnezEgX9FBbayhJNkEHEXWu6Ca153WdPva0O~IReKHWwVWL~pJkD1aU-hAcczSU7FgPNVCRZdfoY4Ty5BZvlR2y9i8rSwa09um8gkZs6Qm~0~duNM-GxZ2-6~lq6M~BBcglS3xii~FOowMVdzBu9Fx0HlVk64h9RPA~zuijPcSg5ShlywCVFeGwyBTuKmftfG03eqi~BWnqTQ__",
+        imageUrl = "https://s3-alpha-sig.figma.com/img/13a3/129c/67c7feceb336f371fc34862b2b1a571c?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=qyQPhdhSonryH8TyskKljykFLFRxTqnHne0pyLsG~Z4Ji3wQoXEvxxZIwSwVUJKHeVu26SVQbwF7csxps1oFegN5pumZUsmqPEYHbMWW4lJOOg3DuTcaM5YYEZUAR8gmCp9MF-mCz1Gx62-S3zwu9SkCK49BR1Iqbj~T2QA1d8Xl0BaD3uXeje1mQIRDC-DxjYVKUprfg5sHwrGILw9q-FmZVFR4uXeQfNtyQTLjMzrw~YXrxVJ98rQr8tP8YUKtDsxRGhdI6l5tEjzn-9eL~fkl4f6gg6OrmBzv3Iin5vSJxhI~JTLAMGgv6AoMGl8YO4oR0HPhrZLu3wjCUhnJEg__",
         author = "Михаил Булгаков",
         description = "Сатира с фантастикой о Москве.",
         title = "Мастер и Маргарита"

@@ -32,11 +32,13 @@ fun QuoteItem(modifier: Modifier = Modifier, quote: Quote) {
             Text(
                 text = quote.quote,
                 style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                color = MaterialTheme.colorScheme.onBackground
             )
             Text(
                 text = quote.description,
-                style = MaterialTheme.typography.labelSmall
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.primary
             )
         }
     }

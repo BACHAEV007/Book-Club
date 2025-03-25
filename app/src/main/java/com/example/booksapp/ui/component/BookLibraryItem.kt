@@ -21,6 +21,7 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.example.booksapp.R
 import com.example.booksapp.data.Book
 
+
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun BookLibraryItem(modifier: Modifier = Modifier, book: Book) {

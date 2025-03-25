@@ -22,7 +22,7 @@ import com.example.booksapp.data.Book
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun ReadingNowBookItem(modifier: Modifier = Modifier, book: Book) {
+fun ReadingNowBookItem(modifier: Modifier = Modifier, book: Book, percent: Float, stage: String) {
     Row(modifier = modifier.fillMaxWidth()) {
         GlideImage(
             model = book.imageUrl,
@@ -47,10 +47,16 @@ fun ReadingNowBookItem(modifier: Modifier = Modifier, book: Book) {
                 color = MaterialTheme.colorScheme.primary
             )
             Text(
-                text = "Пролог",
+                text = stage,
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.primary
             )
+            if (percent != 0f){
+                CustomStatusBar(
+                    modifier = Modifier.padding(top = 16.dp),
+                    percent = percent)
+            }
+
         }
     }
 }

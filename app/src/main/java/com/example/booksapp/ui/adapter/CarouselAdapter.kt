@@ -36,7 +36,6 @@ class CarouselAdapter(private val bookList: List<Book>,
         val book = bookList[position]
         Glide.with(holder.itemView.context)
             .load(book.imageUrl)
-            .centerCrop()
             .into(holder.binding.carouselImageView)
 
         holder.binding.authorTextView.text = book.title

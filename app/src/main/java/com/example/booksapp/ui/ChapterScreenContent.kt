@@ -190,12 +190,14 @@ fun ChapterScreenContent(modifier: Modifier = Modifier, onBackClick: () -> Unit)
                 modifier = Modifier,
                 onBackClick = { if (currentStageIndex > 0){
                     currentStageIndex--
+                    detailsData.currentStageIndex--
                     isPlay = false
                     currentHighlightedIndex = -1
                 } },
                 onStagesClick = { isStageMenuVisible = !isStageMenuVisible },
                 onForwardClick = { if (currentStageIndex < detailsData.stages.size - 1){
                     currentStageIndex++
+                    detailsData.currentStageIndex++
                     isPlay = false
                     currentHighlightedIndex = -1
                 } },

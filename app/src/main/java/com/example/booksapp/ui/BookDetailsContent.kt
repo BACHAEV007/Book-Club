@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -74,16 +75,18 @@ fun  BookDetailsContent(
         item {
             Spacer(modifier = Modifier.size(24.dp))
         }
-        item {
-            BookDetailProlonged(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                percent = detailsData.percent
-            )
-        }
-        item {
-            Spacer(modifier = Modifier.size(24.dp))
+        if (detailsData.percent != 0f){
+            item {
+                BookDetailProlonged(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    percent = detailsData.percent
+                )
+            }
+            item {
+                Spacer(modifier = Modifier.size(24.dp))
+            }
         }
         item {
             Text(
@@ -103,6 +106,9 @@ fun  BookDetailsContent(
                 haveRead = stage.isRead,
                 current = (index == detailsData.currentStageIndex)
             )
+        }
+        item {
+            Spacer(modifier = Modifier.size(16.dp))
         }
     }
 }

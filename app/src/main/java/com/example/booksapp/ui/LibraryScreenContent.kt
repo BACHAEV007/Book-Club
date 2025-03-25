@@ -3,10 +3,12 @@ package com.example.booksapp.ui
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -67,6 +69,9 @@ fun LibraryScreenContent(modifier: Modifier = Modifier) {
         }
         items(bookList) { book ->
             BookLibraryItem(modifier = Modifier, book)
+        }
+        item(span = { GridItemSpan(3) }) {
+            Spacer(modifier = Modifier.size(80.dp))
         }
     }
 

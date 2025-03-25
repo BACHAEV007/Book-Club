@@ -1,7 +1,9 @@
 package com.example.booksapp.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
@@ -13,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.booksapp.R
 import com.example.booksapp.data.bookList
+import com.example.booksapp.data.detailsData
 import com.example.booksapp.data.quoteList
 import com.example.booksapp.screen.BookmarksScreen
 import com.example.booksapp.ui.component.QuoteItem
@@ -34,7 +37,7 @@ fun BookmarksScreenContent(modifier: Modifier = Modifier) {
             ReadingNowRow(modifier = Modifier, onClick = {})
         }
         items(bookList.subList(4, 5)) {
-            ReadingNowBookItem(modifier = Modifier, it)
+            ReadingNowBookItem(modifier = Modifier, it, detailsData.percent, detailsData.stages[detailsData.currentStageIndex].name)
         }
         item {
             Text(
@@ -57,6 +60,9 @@ fun BookmarksScreenContent(modifier: Modifier = Modifier) {
         }
         items(quoteList) {
             QuoteItem(modifier = Modifier, it)
+        }
+        item {
+            Spacer(modifier = Modifier.size(88.dp))
         }
     }
 }

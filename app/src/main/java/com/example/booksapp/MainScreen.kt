@@ -74,12 +74,13 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
     val window = LocalContext.current as? Activity
     LaunchedEffect(currentRoute) {
         window?.let { activity ->
-            WindowCompat.getInsetsController(activity.window, activity.window.decorView)?.let { controller ->
-                controller.isAppearanceLightStatusBars = when (currentRoute) {
-                    "com.example.booksapp.screen.BookDetailScreen" -> false
-                    else -> true
+            WindowCompat.getInsetsController(activity.window, activity.window.decorView)
+                .let { controller ->
+                    controller.isAppearanceLightStatusBars = when (currentRoute) {
+                        "com.example.booksapp.screen.BookDetailScreen" -> false
+                        else -> true
+                    }
                 }
-            }
         }
     }
     Scaffold(
@@ -94,10 +95,10 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                     modifier = Modifier
                         .offset(y = 24.dp)
                         .padding(horizontal = 16.dp)
-                        .windowInsetsPadding(WindowInsets.navigationBars)
+
                 ) {
                     FloatingActionButton(
-                        onClick = { navController.navigate(BookDetailScreen)},
+                        onClick = { navController.navigate(BookDetailScreen) },
                         modifier = Modifier
                             .size(80.dp)
                             .align(Alignment.BottomCenter)
@@ -120,16 +121,14 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
             if (currentRoute in listOf(
                     "com.example.booksapp.screen.LibraryScreen",
                     "com.example.booksapp.screen.SearchScreen",
-                    "com.example.booksapp.screen.BookmarksScreen"
+                    "com.example.booksapp.screen.BookmarksScreen",
                 )
             ) {
                 Box(
                     modifier = Modifier
-                        .offset(
-                            y = -WindowInsets.navigationBars.asPaddingValues()
-                                .calculateBottomPadding()
-                        )
+
                         .padding(horizontal = 16.dp)
+                        .padding(bottom = 16.dp)
                         .windowInsetsPadding(WindowInsets.navigationBars)
                 ) {
                     when (currentRoute) {
@@ -138,13 +137,32 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                         "com.example.booksapp.screen.BookmarksScreen"
                             -> {
                             CustomBottomBar(
-                                selectedIndex = selectedIndex,
+                                currentRoute = currentRoute,
                                 onItemSelected = { newIndex ->
                                     selectedIndex = newIndex
                                     when (newIndex) {
-                                        0 -> navController.navigate(LibraryScreen)
-                                        1 -> navController.navigate(SearchScreen)
-                                        3 -> navController.navigate(BookmarksScreen)
+                                        0 -> navController.navigate(LibraryScreen) {
+                                            popUpTo(LibraryScreen) {
+                                                inclusive = true
+                                            }
+                                        }
+
+                                        1 -> navController.navigate(SearchScreen) {
+                                            popUpTo(LibraryScreen) {
+                                                inclusive = false
+                                            }
+                                        }
+
+                                        3 -> navController.navigate(BookmarksScreen) {
+                                            popUpTo(LibraryScreen) {
+                                                inclusive = false
+                                            }
+                                        }
+                                        4 -> navController.navigate(SignInScreen){
+                                            popUpTo(LibraryScreen) {
+                                                inclusive = true
+                                            }
+                                        }
                                     }
                                 }
                             )
@@ -164,7 +182,12 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                     SignInScreenContent(modifier = modifier.fillMaxSize(), {
                         navController.navigate(
                             LibraryScreen
-                        )
+                        ) {
+                            popUpTo(SignInScreen) {
+                                inclusive = true
+                            }
+
+                        }
                     })
                 }
                 composable<LibraryScreen> {
@@ -189,12 +212,14 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                     )
                 }
                 composable<BookDetailScreen> {
-                    val statusBarHeight = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
+                    val statusBarHeight =
+                        WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
                     BookDetailsContent(
                         modifier = modifier
-                            .fillMaxSize().offset(y = -statusBarHeight),
+                            .fillMaxSize()
+                            .offset(y = -statusBarHeight),
                         onBackClick = { navController.popBackStack() },
-                        onStageClick = { navController.navigate(ChapterScreen)},
+                        onStageClick = { navController.navigate(ChapterScreen) },
                         topBarPadding = statusBarHeight
                     )
                 }
