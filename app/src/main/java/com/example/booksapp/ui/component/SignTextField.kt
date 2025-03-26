@@ -25,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -41,6 +42,7 @@ fun SignTextField(
     icon: Painter,
     isPasswordField: Boolean = false,
     value: String,
+    testTag: String = "",
     onValueChange: (String) -> Unit
 ) {
     var passwordVisible by remember { mutableStateOf(!isPasswordField) }
@@ -81,7 +83,7 @@ fun SignTextField(
                     style = MaterialTheme.typography.bodySmall
                 )
             },
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f).testTag(testTag)
         )
         if (value != "") {
             Image(painter = when {

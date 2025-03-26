@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -21,19 +22,24 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.booksapp.R
 import com.example.booksapp.data.Book
+import com.example.booksapp.ui.LibraryTestTags
 
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun BookLibraryItem(modifier: Modifier = Modifier, book: Book, onBookClick: () -> Unit) {
-    Column (modifier = modifier.clickable { onBookClick() }){
+fun BookLibraryItem(
+    modifier: Modifier = Modifier, book: Book, onBookClick: () -> Unit,
+    index: Int
+) {
+    Column(modifier = modifier.clickable { onBookClick() }) {
         GlideImage(
             model = book.imageUrl,
             contentDescription = null,
             modifier = Modifier
                 .width(116.dp)
                 .fillMaxHeight()
-                .clip(RoundedCornerShape(size = 4.dp)),
+                .clip(RoundedCornerShape(size = 4.dp))
+                .testTag("${LibraryTestTags.BookImageTestTagPrefix}$index"),
             contentScale = ContentScale.Fit
         ) {
             it.placeholder(R.drawable.cross_icon)
@@ -49,7 +55,9 @@ fun BookLibraryItem(modifier: Modifier = Modifier, book: Book, onBookClick: () -
         Text(
             text = book.author,
             style = MaterialTheme.typography.labelSmall,
-            modifier = Modifier.padding(top = 4.dp),
+            modifier = Modifier
+                .padding(top = 4.dp)
+                .testTag("${LibraryTestTags.BookAuthorTestTagPrefix}$index"),
             color = MaterialTheme.colorScheme.primary
         )
     }
