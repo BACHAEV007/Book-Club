@@ -14,9 +14,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.booksapp.data.BookDetailData
+import com.example.booksapp.ui.BookDetailsTestTags
 
 @Composable
 fun BookDetailsDescription(modifier: Modifier = Modifier, bookDetailData: BookDetailData) {
@@ -32,6 +34,7 @@ fun BookDetailsDescription(modifier: Modifier = Modifier, bookDetailData: BookDe
             color = MaterialTheme.colorScheme.primary,
             modifier = modifier
                 .padding(horizontal = 16.dp)
+                .testTag(BookDetailsTestTags.BookTitleTestTag)
         )
         Spacer(modifier = Modifier.size(8.dp))
 
@@ -41,6 +44,7 @@ fun BookDetailsDescription(modifier: Modifier = Modifier, bookDetailData: BookDe
             color = MaterialTheme.colorScheme.primary,
             modifier = modifier
                 .padding(horizontal = 16.dp)
+                .testTag(BookDetailsTestTags.BookAuthorTestTag)
         )
         Spacer(modifier = Modifier.size(24.dp))
         for (paragraph in paragraphs) {

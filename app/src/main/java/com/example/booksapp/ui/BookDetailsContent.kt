@@ -27,11 +27,13 @@ import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.motionEventSpy
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.booksapp.R
+import com.example.booksapp.data.BookDetailData
 import com.example.booksapp.data.detailsData
 import com.example.booksapp.ui.component.BookDetailHeader
 import com.example.booksapp.ui.component.BookDetailProlonged
@@ -39,11 +41,12 @@ import com.example.booksapp.ui.component.BookDetailsDescription
 import com.example.booksapp.ui.component.StagesContent
 
 @Composable
-fun  BookDetailsContent(
+fun BookDetailsContent(
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
     onStageClick: (Int) -> Unit,
-    topBarPadding: Dp
+    topBarPadding: Dp,
+    detailsData: BookDetailData = com.example.booksapp.data.detailsData
 ) {
     val lazyListState = rememberLazyListState()
     var scrolledY = 0f
@@ -57,11 +60,13 @@ fun  BookDetailsContent(
                 onBackClick = onBackClick,
                 onReadClick = { onStageClick(detailsData.currentStageIndex) },
                 onFavoriteClick = { },
-                modifier = Modifier.graphicsLayer {
-                    scrolledY += lazyListState.firstVisibleItemScrollOffset - previousOffset
-                    translationY = scrolledY * 0.5f
-                    previousOffset = lazyListState.firstVisibleItemScrollOffset
-                },
+                modifier = Modifier
+                    .testTag(BookDetailsTestTags.BookDetailHeaderTestTag)
+                    .graphicsLayer {
+                        scrolledY += lazyListState.firstVisibleItemScrollOffset - previousOffset
+                        translationY = scrolledY * 0.5f
+                        previousOffset = lazyListState.firstVisibleItemScrollOffset
+                    },
                 image = detailsData.image,
                 topBarPadding = topBarPadding
             )
@@ -70,17 +75,21 @@ fun  BookDetailsContent(
             Spacer(modifier = Modifier.size(24.dp))
         }
         item {
-            BookDetailsDescription(modifier = Modifier, detailsData)
+            BookDetailsDescription(
+                modifier = Modifier.testTag(BookDetailsTestTags.BookDetailsDescriptionTestTag),
+                detailsData
+            )
         }
         item {
             Spacer(modifier = Modifier.size(24.dp))
         }
-        if (detailsData.percent != 0f){
+        if (detailsData.percent != 0f) {
             item {
                 BookDetailProlonged(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
+                        .padding(horizontal = 16.dp)
+                        .testTag(BookDetailsTestTags.BookDetailProlongedTestTag),
                     percent = detailsData.percent
                 )
             }
@@ -93,7 +102,9 @@ fun  BookDetailsContent(
                 text = stringResource(R.string.tables).uppercase(),
                 style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(horizontal = 16.dp)
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .testTag(BookDetailsTestTags.TablesTitleTestTag)
             )
         }
         item {
@@ -102,7 +113,9 @@ fun  BookDetailsContent(
         itemsIndexed(detailsData.stages) { index, stage ->
             StagesContent(
                 stage = stage.name,
-                modifier = Modifier.padding(horizontal = 16.dp),
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .testTag("${BookDetailsTestTags.StageItemTestTagPrefix}$index"),
                 haveRead = stage.isRead,
                 current = (index == detailsData.currentStageIndex)
             )
@@ -113,8 +126,3 @@ fun  BookDetailsContent(
     }
 }
 
-
-@Composable
-fun BookDetailsContentPreview() {
-    BookDetailsContent(onBackClick = {}, onStageClick = {}, topBarPadding = 32.dp)
-}
