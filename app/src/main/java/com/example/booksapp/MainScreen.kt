@@ -40,6 +40,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.booksapp.constants.Routes
 import com.example.booksapp.screen.BookDetailScreen
 import com.example.booksapp.screen.BookmarksScreen
 import com.example.booksapp.screen.ChapterScreen
@@ -70,22 +71,22 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController, 
             WindowCompat.getInsetsController(activity.window, activity.window.decorView)
                 .let { controller ->
                     controller.isAppearanceLightStatusBars = when (currentRoute) {
-                        "com.example.booksapp.screen.BookDetailScreen" -> false
+                        Routes.BOOK_DETAIL_SCREEN -> false
                         else -> true
                     }
                     controller.isAppearanceLightNavigationBars = when (currentRoute) {
-                        "com.example.booksapp.screen.SignInScreen" -> false
-                        "com.example.booksapp.screen.ChapterScreen" -> false
+                        Routes.SIGN_IN_SCREEN -> false
+                        Routes.CHAPTER_SCREEN -> false
                         else -> true
                     }
                 }
             activity.window.navigationBarColor = when (currentRoute) {
-                "com.example.booksapp.screen.SignInScreen" -> primaryColor.toArgb()
-                "com.example.booksapp.screen.ChapterScreen" -> primaryColor.toArgb()
+                Routes.SIGN_IN_SCREEN -> primaryColor.toArgb()
+                Routes.CHAPTER_SCREEN -> primaryColor.toArgb()
                 else -> backgroundColor.toArgb()
             }
             activity.window.statusBarColor = when (currentRoute) {
-                "com.example.booksapp.screen.SignInScreen" -> primaryColor.toArgb()
+                Routes.SIGN_IN_SCREEN -> primaryColor.toArgb()
                 else -> backgroundColor.toArgb()
             }
 
@@ -94,9 +95,9 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController, 
     Scaffold(
         floatingActionButton = {
             if (currentRoute in listOf(
-                    "com.example.booksapp.screen.LibraryScreen",
-                    "com.example.booksapp.screen.SearchScreen",
-                    "com.example.booksapp.screen.BookmarksScreen"
+                    Routes.LIBRARY_SCREEN,
+                    Routes.SEARCH_SCREEN,
+                    Routes.BOOKMARKS_SCREEN
                 )
             ) {
                 Box(
@@ -128,9 +129,9 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController, 
         floatingActionButtonPosition = FabPosition.Center,
         bottomBar = {
             if (currentRoute in listOf(
-                    "com.example.booksapp.screen.LibraryScreen",
-                    "com.example.booksapp.screen.SearchScreen",
-                    "com.example.booksapp.screen.BookmarksScreen",
+                    Routes.LIBRARY_SCREEN,
+                    Routes.SEARCH_SCREEN,
+                    Routes.BOOKMARKS_SCREEN
                 )
             ) {
                 Box(
@@ -141,10 +142,9 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController, 
                         .windowInsetsPadding(WindowInsets.navigationBars)
                 ) {
                     when (currentRoute) {
-                        "com.example.booksapp.screen.LibraryScreen",
-                        "com.example.booksapp.screen.SearchScreen",
-                        "com.example.booksapp.screen.BookmarksScreen"
-                            -> {
+                        Routes.LIBRARY_SCREEN,
+                        Routes.SEARCH_SCREEN,
+                        Routes.BOOKMARKS_SCREEN -> {
                             CustomBottomBar(
                                 currentRoute = currentRoute,
                                 onItemSelected = { newIndex ->

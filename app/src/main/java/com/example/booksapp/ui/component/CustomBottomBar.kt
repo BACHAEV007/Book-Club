@@ -1,43 +1,29 @@
 package com.example.booksapp.ui.component
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import com.example.booksapp.R
+import com.example.booksapp.constants.Routes
 import com.example.booksapp.ui.MainTestTag
-import kotlinx.serialization.Serializable
 
 @Composable
 fun CustomBottomBar(
@@ -46,9 +32,9 @@ fun CustomBottomBar(
     modifier: Modifier = Modifier
 ) {
     val routeToIndex = mapOf(
-        "com.example.booksapp.screen.LibraryScreen" to 0,
-        "com.example.booksapp.screen.SearchScreen" to 1,
-        "com.example.booksapp.screen.BookmarksScreen" to 3
+        Routes.LIBRARY_SCREEN to 0,
+        Routes.SEARCH_SCREEN to 1,
+        Routes.BOOKMARKS_SCREEN to 3
     )
 
 
@@ -63,7 +49,7 @@ fun CustomBottomBar(
         tonalElevation = 0.dp,
         windowInsets = WindowInsets(0.dp)
 
-        ) {
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -81,7 +67,8 @@ fun CustomBottomBar(
             icons.forEachIndexed { index, iconRes ->
                 Box(
                     contentAlignment = Alignment.Center,
-                    modifier = Modifier.size(48.dp)
+                    modifier = Modifier
+                        .size(48.dp)
                         .clip(CircleShape)
                         .testTag(buildString {
                             append(MainTestTag.BottomBarItem)
@@ -102,8 +89,3 @@ fun CustomBottomBar(
     }
 }
 
-//@Preview
-//@Composable
-//fun CustomBottomBarPreview() {
-//    CustomBottomBar(selectedIndex = 0, onItemSelected = {})
-//}

@@ -4,24 +4,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.booksapp.ui.Paragraph
 import com.example.booksapp.ui.theme.Georgia
-import kotlinx.coroutines.delay
 
 @Composable
 fun HighlightedParagraph(
@@ -34,19 +27,24 @@ fun HighlightedParagraph(
     val annotatedString = buildAnnotatedString {
         paragraph.sentences.forEachIndexed { index, sentence ->
             val globalIndex = sentenceRange.first + index
-            if (globalIndex == currentHighlightedIndex) {
-                withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onSecondary)) {
-                    append(sentence)
-                    if (index < paragraph.sentences.size - 1) {
-                        append(". ")
-                    }
-                }
+            val isItalic = sentence.startsWith("*")
+            val displaySentence = if (isItalic) sentence.removePrefix("*").trim() else sentence
+            val colorStyle = if (globalIndex == currentHighlightedIndex) {
+                SpanStyle(color = MaterialTheme.colorScheme.onSecondary)
             } else {
-                withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onBackground)) {
-                    append(sentence)
-                    if (index < paragraph.sentences.size - 1) {
-                        append(". ")
-                    }
+                SpanStyle(color = MaterialTheme.colorScheme.onBackground)
+            }
+
+            val combinedStyle = if (isItalic) {
+                colorStyle.copy(fontStyle = FontStyle.Italic)
+            } else {
+                colorStyle.copy(fontStyle = FontStyle.Normal)
+            }
+
+            withStyle(style = combinedStyle) {
+                append(displaySentence)
+                if (index < paragraph.sentences.size - 1) {
+                    append(". ")
                 }
             }
         }
