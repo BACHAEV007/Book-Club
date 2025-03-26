@@ -32,6 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
@@ -49,6 +50,7 @@ import com.example.booksapp.ui.BookDetailsContent
 import com.example.booksapp.ui.BookmarksScreenContent
 import com.example.booksapp.ui.ChapterScreenContent
 import com.example.booksapp.ui.LibraryScreenContent
+import com.example.booksapp.ui.MainTestTag
 import com.example.booksapp.ui.SearchScreenContent
 import com.example.booksapp.ui.SignInScreenContent
 import com.example.booksapp.ui.component.CustomBottomBar
@@ -56,7 +58,7 @@ import com.example.booksapp.ui.component.CustomBottomBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "ContextCastToActivity")
 @Composable
-fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) {
+fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController, isTesting: Boolean = false) {
     var selectedIndex by remember { mutableStateOf(0) }
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
@@ -109,7 +111,8 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                             .size(80.dp)
                             .align(Alignment.BottomCenter)
                             .offset(y = 64.dp)
-                            .clip(RoundedCornerShape(64.dp)),
+                            .clip(RoundedCornerShape(64.dp))
+                            .testTag(MainTestTag.MainScreenFAB),
                         containerColor = Color.Red
                     ) {
                         Icon(
@@ -171,7 +174,8 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                                             }
                                         }
                                     }
-                                }
+                                },
+                                modifier = Modifier.testTag(MainTestTag.CustomBottomBar)
                             )
                         }
                     }
@@ -186,21 +190,27 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                 modifier = Modifier
             ) {
                 composable<SignInScreen> {
-                    SignInScreenContent(modifier = modifier.fillMaxSize(), {
-                        navController.navigate(
-                            LibraryScreen
-                        ) {
-                            popUpTo(SignInScreen) {
-                                inclusive = true
+                    SignInScreenContent(
+                        modifier = modifier
+                            .fillMaxSize()
+                            .testTag(MainTestTag.SignInScreenContent),
+                        {
+                            navController.navigate(
+                                LibraryScreen
+                            ) {
+                                popUpTo(SignInScreen) {
+                                    inclusive = true
+                                }
                             }
-                        }
-                    })
+                        },
+                        isTesting = isTesting)
                 }
                 composable<LibraryScreen> {
                     LibraryScreenContent(
                         modifier = modifier
                             .fillMaxSize()
-                            .padding(horizontal = 16.dp),
+                            .padding(horizontal = 16.dp)
+                            .testTag(MainTestTag.LibraryScreenContent),
                         onBookClick = {
                             navController.navigate(BookDetailScreen)
                         }
@@ -210,7 +220,8 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                     SearchScreenContent(
                         modifier = modifier
                             .fillMaxSize()
-                            .padding(horizontal = 16.dp),
+                            .padding(horizontal = 16.dp)
+                            .testTag(MainTestTag.SearchScreenContent),
                         onBookClick = { navController.navigate(BookDetailScreen) }
                     )
                 }
@@ -218,9 +229,10 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                     BookmarksScreenContent(
                         modifier = modifier
                             .fillMaxSize()
-                            .padding(horizontal = 16.dp),
+                            .padding(horizontal = 16.dp)
+                            .testTag(MainTestTag.BookmarksScreenContent),
                         onBookClick = { navController.navigate(BookDetailScreen) },
-                        onReadNowClick = {navController.navigate(ChapterScreen)}
+                        onReadNowClick = { navController.navigate(ChapterScreen) }
                     )
                 }
                 composable<BookDetailScreen> {
@@ -229,7 +241,8 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                     BookDetailsContent(
                         modifier = modifier
                             .fillMaxSize()
-                            .offset(y = -statusBarHeight),
+                            .offset(y = -statusBarHeight)
+                            .testTag(MainTestTag.BookDetailScreenContent),
                         onBackClick = { navController.popBackStack() },
                         onStageClick = { navController.navigate(ChapterScreen) },
                         topBarPadding = statusBarHeight
@@ -238,7 +251,8 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                 composable<ChapterScreen> {
                     ChapterScreenContent(
                         modifier = modifier
-                            .fillMaxSize(),
+                            .fillMaxSize()
+                            .testTag(MainTestTag.ChapterScreenContent),
                         onBackClick = { navController.popBackStack() },
                     )
                 }

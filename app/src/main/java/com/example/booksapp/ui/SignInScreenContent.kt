@@ -35,7 +35,7 @@ import com.example.booksapp.ui.component.SignTextField
 fun SignInScreenContent(
     modifier: Modifier = Modifier,
     onEnterClick: () -> Unit,
-    isTesting: Boolean = false
+    isTesting: Boolean = true
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }

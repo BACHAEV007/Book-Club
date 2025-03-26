@@ -28,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,6 +36,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.booksapp.R
+import com.example.booksapp.ui.MainTestTag
 import kotlinx.serialization.Serializable
 
 @Composable
@@ -81,6 +83,10 @@ fun CustomBottomBar(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.size(48.dp)
                         .clip(CircleShape)
+                        .testTag(buildString {
+                            append(MainTestTag.BottomBarItem)
+                            append("${index}")
+                        })
 
                         .clickable { onItemSelected(index) },
                 ) {

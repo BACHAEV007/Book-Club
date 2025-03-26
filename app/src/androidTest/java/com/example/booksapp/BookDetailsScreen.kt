@@ -18,6 +18,10 @@ class BookDetailsScreen(semanticsProvider: SemanticsNodeInteractionsProvider) :
         hasTestTag(BookDetailsTestTags.TablesTitleTestTag)
     }
 
+    val readButton: KNode = child {
+        hasTestTag(BookDetailsTestTags.BookDetailReadButtonTestTag)
+    }
+
     val bookDetailsDescription: KNode = child {
         hasTestTag(BookDetailsTestTags.BookDetailsDescriptionTestTag)
     }
@@ -94,6 +98,10 @@ class BookDetailsScreen(semanticsProvider: SemanticsNodeInteractionsProvider) :
             performClick()
             onClick(index)
         }
+    }
+
+    fun onReadButtonClick(){
+        readButton.performClick()
     }
 
 

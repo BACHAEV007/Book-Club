@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.booksapp.R
+import com.example.booksapp.ui.BookDetailsTestTags
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -131,7 +133,9 @@ fun BookDetailHeader(
                         top = 15.dp,
                         bottom = 15.dp
                     ),
-                    modifier = Modifier.weight(0.552f),
+                    modifier = Modifier
+                        .weight(0.552f)
+                        .testTag(BookDetailsTestTags.BookDetailReadButtonTestTag),
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.play_icon),

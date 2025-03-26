@@ -4,7 +4,18 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-03-26T00:15:44.944451900Z">
+        <DropdownSelection timestamp="2025-03-26T00:17:05.793748400Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\mvbac\.android\avd\Small_Phone_API_35_2.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
+      </SelectionState>
+      <SelectionState runConfigName="testBookDetailsScreenWithProgress()">
+        <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2025-03-26T00:35:45.909142800Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\mvbac\.android\avd\Pixel_3a_API_35.avd" />
@@ -13,19 +24,16 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="testLibraryScreenWithBooks()">
+      <SelectionState runConfigName="testBookDetailsScreenWithoutProgress()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="LibraryScreenTest">
+      <SelectionState runConfigName="BookDetailsScreenTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="testBookmarksScreenWithData()">
+      <SelectionState runConfigName="testBookDetailsScreenWithoutData()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="testBookmarksScreenWithoutData()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="BookmarksScreenTest">
+      <SelectionState runConfigName="testNavigationThroughAllScreens()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

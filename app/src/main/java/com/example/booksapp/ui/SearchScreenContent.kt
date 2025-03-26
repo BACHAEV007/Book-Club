@@ -4,21 +4,12 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -34,6 +25,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,7 +35,6 @@ import com.example.booksapp.R
 import com.example.booksapp.data.bookList
 import com.example.booksapp.data.searchScreenData
 import com.example.booksapp.ui.component.AuthorItem
-import com.example.booksapp.ui.component.FilterItem
 import com.example.booksapp.ui.component.GenresRow
 import com.example.booksapp.ui.component.LastQueryItem
 import com.example.booksapp.ui.component.SearchBookItem
@@ -56,7 +47,10 @@ fun SearchScreenContent(modifier: Modifier = Modifier, onBookClick: () -> Unit) 
     Box(
         modifier = if (!expanded) Modifier
             .fillMaxSize()
-            .padding(top = 16.dp, start = 16.dp, end = 16.dp) else Modifier.fillMaxSize()
+            .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+            .testTag(MainTestTag.SearchScreenContent) else Modifier
+            .fillMaxSize()
+            .testTag(MainTestTag.SearchScreenContent)
     ) {
         SearchBar(
             modifier = Modifier.fillMaxWidth(),
@@ -141,7 +135,7 @@ fun SearchScreenContent(modifier: Modifier = Modifier, onBookClick: () -> Unit) 
             }
         }
         if (!expanded) {
-            LazyColumn (
+            LazyColumn(
                 modifier = Modifier.padding(top = 126.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
@@ -199,8 +193,6 @@ fun SearchScreenContent(modifier: Modifier = Modifier, onBookClick: () -> Unit) 
         }
     }
 }
-
-
 
 
 @Preview

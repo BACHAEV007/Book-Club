@@ -8,6 +8,8 @@ object BookDetailsTestTags {
     const val BookTitleTestTag = "BookTitleTestTag"
     const val BookAuthorTestTag = "BookAuthorTestTag"
 
+    const val BookDetailReadButtonTestTag = "BookDetailReadButtonTestTag"
+
     const val BookDetailProlongedTestTag = "BookDetailProlongedTestTag"
     const val HaveReadTitleTestTag = "HaveReadTitleTestTag"
     const val ProgressBarTestTag = "ProgressBarTestTag"
