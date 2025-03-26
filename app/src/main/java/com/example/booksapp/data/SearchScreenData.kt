@@ -26,7 +26,8 @@ data class SearchScreenData(
             imageUrl = "https://s3-alpha-sig.figma.com/img/fc2f/2f1c/898bdf2cb5cf0120237adce81ea30a40?Expires=1742774400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=YF3zF9Rv6YP1nFyFtFQALFhmqBE0y3zT4DY2F6Pc-aGpgTaIDegwQcYlA0I2e8-U3MAsIQi5ZM7gZ0kf0JLGZWXOuzFnVJsWQzn4qdg7OjMjV4ArNS40eNVzGWurnJQUI7uXqMwRvkYRm1raLtHkaXK-EkpAEx5lTBvvjxhpmlEFZW~qy1Fbc4W~od-i~5KlPObbA78GzeN1Rxl22UtufuyC0Ei24xdX53J8inrrshLSZmPJ8hxJdwlWyhBfGfMim7UZBGoQrJAJuZ4XvE5jgZqfplNzfaqheYenxiWz5d6O283UXw1ZaH2dV3atPRvqp8aNPMSTpwGaNeTMzX-Y3w__",
             name = "Дэн Браун"
         )
-    ),)
+    ),
+)
 
 data class Author(
     val imageUrl: String,

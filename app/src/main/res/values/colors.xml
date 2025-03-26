@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="white_kit">#FFF2F2F2</color>
 
+    <color name="launch_screen_background">#FCF2E8</color>
+
 </resources>

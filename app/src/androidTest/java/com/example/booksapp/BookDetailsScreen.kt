@@ -1,7 +1,6 @@
 package com.example.booksapp
 
 import androidx.compose.ui.test.SemanticsNodeInteractionsProvider
-import com.example.booksapp.data.BookDetailData
 import com.example.booksapp.data.Stage
 import com.example.booksapp.ui.BookDetailsTestTags
 import io.github.kakaocup.compose.node.element.ComposeScreen
@@ -100,7 +99,7 @@ class BookDetailsScreen(semanticsProvider: SemanticsNodeInteractionsProvider) :
         }
     }
 
-    fun onReadButtonClick(){
+    fun onReadButtonClick() {
         readButton.performClick()
     }
 

@@ -1,6 +1,5 @@
 package com.example.booksapp.ui.component
 
-import android.icu.text.CaseMap.Title
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,13 +15,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.booksapp.R
 
 @Composable
-fun ChapterHeader(modifier: Modifier = Modifier, onBackClick: () -> Unit, currentStage: String, title: String) {
+fun ChapterHeader(
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit,
+    currentStage: String,
+    title: String
+) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -44,7 +47,12 @@ fun ChapterHeader(modifier: Modifier = Modifier, onBackClick: () -> Unit, curren
                 contentDescription = null
             )
         }
-        Column(modifier = Modifier.weight(1f).padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .padding(horizontal = 16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Text(
                 text = title.uppercase(),
                 style = MaterialTheme.typography.headlineMedium,
@@ -61,8 +69,3 @@ fun ChapterHeader(modifier: Modifier = Modifier, onBackClick: () -> Unit, curren
     }
 }
 
-//@Preview
-//@Composable
-//fun ChapterHeaderPreview() {
-//    ChapterHeader(onBackClick = {})
-//}

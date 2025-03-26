@@ -1,13 +1,8 @@
 package com.example.booksapp.ui
 
-import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.expandHorizontally
-import androidx.compose.animation.expandIn
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.shrinkHorizontally
-import androidx.compose.animation.shrinkOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
@@ -17,7 +12,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -26,9 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
-
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -42,12 +34,14 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.booksapp.data.ParagraphWithRange
 import com.example.booksapp.data.detailsData
 import com.example.booksapp.ui.component.BottomSheetContent
 import com.example.booksapp.ui.component.ChapterBottomBar
 import com.example.booksapp.ui.component.ChapterHeader
 import com.example.booksapp.ui.component.HighlightedParagraph
 import com.example.booksapp.ui.component.StagesCustomMenu
+import com.example.booksapp.utils.parseTextToParagraphs
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -129,8 +123,13 @@ fun ChapterScreenContent(modifier: Modifier = Modifier, onBackClick: () -> Unit)
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
-            ChapterHeader(modifier = Modifier, onBackClick, detailsData.stages[currentStageIndex].name, detailsData.title)
-            Box(modifier = Modifier.weight(1f)){
+            ChapterHeader(
+                modifier = Modifier,
+                onBackClick,
+                detailsData.stages[currentStageIndex].name,
+                detailsData.title
+            )
+            Box(modifier = Modifier.weight(1f)) {
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
@@ -152,7 +151,7 @@ fun ChapterScreenContent(modifier: Modifier = Modifier, onBackClick: () -> Unit)
                     }
 
                 }
-                if (!isFirstItemFullyVisible){
+                if (!isFirstItemFullyVisible) {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -188,19 +187,23 @@ fun ChapterScreenContent(modifier: Modifier = Modifier, onBackClick: () -> Unit)
 
             ChapterBottomBar(
                 modifier = Modifier,
-                onBackClick = { if (currentStageIndex > 0){
-                    currentStageIndex--
-                    detailsData.currentStageIndex--
-                    isPlay = false
-                    currentHighlightedIndex = -1
-                } },
+                onBackClick = {
+                    if (currentStageIndex > 0) {
+                        currentStageIndex--
+                        detailsData.currentStageIndex--
+                        isPlay = false
+                        currentHighlightedIndex = -1
+                    }
+                },
                 onStagesClick = { isStageMenuVisible = !isStageMenuVisible },
-                onForwardClick = { if (currentStageIndex < detailsData.stages.size - 1){
-                    currentStageIndex++
-                    detailsData.currentStageIndex++
-                    isPlay = false
-                    currentHighlightedIndex = -1
-                } },
+                onForwardClick = {
+                    if (currentStageIndex < detailsData.stages.size - 1) {
+                        currentStageIndex++
+                        detailsData.currentStageIndex++
+                        isPlay = false
+                        currentHighlightedIndex = -1
+                    }
+                },
                 onSettingsClick = { isBottomSheetVisible = !isBottomSheetVisible },
                 onPlayClick = { isPlay = !isPlay },
                 isPlay = isPlay
@@ -258,19 +261,7 @@ fun ChapterScreenContent(modifier: Modifier = Modifier, onBackClick: () -> Unit)
 
 }
 
-data class Paragraph(val sentences: List<String>)
 
-data class ParagraphWithRange(
-    val paragraph: Paragraph,
-    val sentenceRange: IntRange
-)
 
-fun parseTextToParagraphs(text: String): List<Paragraph> {
-    val paragraphs = text.split("\n").filter { it.isNotBlank() }
-    return paragraphs.map { paragraphText ->
-        val sentences = paragraphText.split(Regex("(?<=[.!?])\\s+|(?<=[.!?])$"))
-            .filter { it.isNotBlank() }
-            .map { it.trim() }
-        Paragraph(sentences)
-    }
-}
+
+

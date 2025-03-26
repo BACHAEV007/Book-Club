@@ -20,7 +20,7 @@ fun StagesContent(
     haveRead: Boolean = false,
     current: Boolean = false
 ) {
-    Row (modifier = modifier.padding(vertical = 12.dp)){
+    Row(modifier = modifier.padding(vertical = 12.dp)) {
         Text(
             text = stage,
             style = if (current) MaterialTheme.typography.titleMedium else MaterialTheme.typography.bodyLarge,
@@ -28,13 +28,13 @@ fun StagesContent(
             modifier = Modifier.weight(1f)
         )
         Spacer(modifier = Modifier.size(16.dp))
-        if (haveRead){
+        if (haveRead) {
             Icon(
                 painter = painterResource(R.drawable.read),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.secondary
             )
-        } else if (current){
+        } else if (current) {
             Icon(
                 painter = painterResource(R.drawable.reading_now),
                 contentDescription = null,

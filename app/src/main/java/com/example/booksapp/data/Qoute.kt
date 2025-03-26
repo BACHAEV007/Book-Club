@@ -1,6 +1,6 @@
 package com.example.booksapp.data
 
-data class Quote (val quote: String, val description: String)
+data class Quote(val quote: String, val description: String)
 
 val quoteList = listOf(
     Quote(

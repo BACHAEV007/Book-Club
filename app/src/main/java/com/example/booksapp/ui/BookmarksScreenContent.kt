@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -18,10 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.booksapp.R
 import com.example.booksapp.data.Book
 import com.example.booksapp.data.Quote
-import com.example.booksapp.data.bookList
 import com.example.booksapp.data.detailsData
-import com.example.booksapp.data.quoteList
-import com.example.booksapp.screen.BookmarksScreen
 import com.example.booksapp.ui.component.QuoteItem
 import com.example.booksapp.ui.component.ReadingNowBookItem
 import com.example.booksapp.ui.component.ReadingNowRow
@@ -53,7 +49,7 @@ fun BookmarksScreenContent(
                 onClick = onReadNowClick
             )
         }
-        if (bookList.isNotEmpty()){
+        if (bookList.isNotEmpty()) {
             itemsIndexed(bookList.subList(0, 1)) { index, book ->
                 ReadingNowBookItem(
                     modifier = Modifier.testTag(BookmarksTestTags.ReadingNowBookItemTestTag),
@@ -73,7 +69,7 @@ fun BookmarksScreenContent(
                     .testTag(BookmarksTestTags.FavoritesBooksTitleTestTag)
             )
         }
-        if (bookList.isNotEmpty()){
+        if (bookList.isNotEmpty()) {
             itemsIndexed(bookList.subList(0, bookList.size - 1)) { index, book ->
                 SearchBookItem(
                     modifier = Modifier.testTag("${BookmarksTestTags.SearchBookItemTestTagPrefix}$index"),

@@ -13,21 +13,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.booksapp.R
-import com.example.booksapp.data.searchScreenData
 
 @Composable
-fun LastQueryItem(modifier: Modifier = Modifier, query: String, onClick:() -> Unit) {
+fun LastQueryItem(modifier: Modifier = Modifier, query: String, onClick: () -> Unit) {
     Box(
         modifier = modifier
             .background(
                 color = MaterialTheme.colorScheme.tertiary,
                 shape = RoundedCornerShape(8.dp)
-            ).clickable { onClick() }
+            )
+            .clickable { onClick() }
     ) {
         Row(
             modifier = modifier
@@ -59,10 +57,3 @@ fun LastQueryItem(modifier: Modifier = Modifier, query: String, onClick:() -> Un
         }
     }
 }
-
-
-//@Preview
-//@Composable
-//fun LastQueryItemPreview() {
-//    LastQueryItem(query = "IOS")
-//}

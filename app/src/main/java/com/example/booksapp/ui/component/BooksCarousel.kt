@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.example.booksapp.constants.Constants
 import com.example.booksapp.data.bookList
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -34,7 +35,7 @@ fun BooksCarousel(modifier: Modifier = Modifier, isTesting: Boolean = false) {
 
     val shouldRenderLazyRow by remember {
         derivedStateOf {
-            lazyListState.layoutInfo.visibleItemsInfo.size <= MINIMUM_IMAGES_CAROUSEL
+            lazyListState.layoutInfo.visibleItemsInfo.size <= Constants.MINIMUM_IMAGES_CAROUSEL
         }
     }
 
@@ -43,8 +44,8 @@ fun BooksCarousel(modifier: Modifier = Modifier, isTesting: Boolean = false) {
     LaunchedEffect(Unit) {
         if (isTesting) return@LaunchedEffect
         while (true) {
-            lazyListState.scrollBy(SCROLL_DX)
-            delay(DELAY_BETWEEN_SCROLL_MS)
+            lazyListState.scrollBy(Constants.SCROLL_DX)
+            delay(Constants.DELAY_BETWEEN_SCROLL_MS)
 
             if (lazyListState.firstVisibleItemIndex >= bookList.size) {
                 coroutineScope.launch {
@@ -77,9 +78,7 @@ fun BooksCarousel(modifier: Modifier = Modifier, isTesting: Boolean = false) {
     }
 }
 
-private const val DELAY_BETWEEN_SCROLL_MS = 8L
-private const val SCROLL_DX = 1f
-private const val MINIMUM_IMAGES_CAROUSEL = 6
+
 
 @Preview
 @Composable

@@ -1,4 +1,6 @@
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.test.printToLog
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.booksapp.data.Book
 import com.example.booksapp.data.Quote
@@ -118,6 +120,10 @@ class BookmarksScreenTest {
         bookmarksScreen.checkPlayButtonClick {
             assertTrue("onReadNowClick", playClicked)
         }
+
+        composeTestRule
+            .onRoot()
+            .printToLog("semantic tree")
     }
 
     @Test
@@ -134,5 +140,9 @@ class BookmarksScreenTest {
         bookmarksScreen.checkNoFavoritesBooks()
 
         bookmarksScreen.checkNoQuotes()
+
+        composeTestRule
+            .onRoot()
+            .printToLog("semantic tree")
     }
 }

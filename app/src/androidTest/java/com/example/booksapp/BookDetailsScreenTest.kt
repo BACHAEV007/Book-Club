@@ -1,6 +1,8 @@
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.test.printToLog
 import androidx.compose.ui.unit.dp
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.booksapp.BookDetailsScreen
 import com.example.booksapp.data.BookDetailData
 import com.example.booksapp.data.Stage
@@ -80,12 +82,19 @@ class BookDetailsScreenTest {
 
         bookDetailsScreen.checkBookDetailProlonged(testBookDetailData.percent)
 
-        bookDetailsScreen.checkStages(testBookDetailData.stages, testBookDetailData.currentStageIndex)
+        bookDetailsScreen.checkStages(
+            testBookDetailData.stages,
+            testBookDetailData.currentStageIndex
+        )
 
         bookDetailsScreen.checkStageClick(1) { index ->
-            assertEquals("Clicked stage index should be 1", 1, index)
-            assertEquals("stageClickedIndex should be 1", 1, stageClickedIndex)
+            assertEquals("Клик на 1 stage", 1, index)
+            assertEquals("indexStage = 1", 1, stageClickedIndex)
         }
+
+        composeTestRule
+            .onRoot()
+            .printToLog("semantic tree")
     }
 
     @Test
@@ -100,5 +109,9 @@ class BookDetailsScreenTest {
         bookDetailsScreen.checkNoBookDetailProlonged()
 
         bookDetailsScreen.checkNoStages()
+
+        composeTestRule
+            .onRoot()
+            .printToLog("semantic tree")
     }
 }

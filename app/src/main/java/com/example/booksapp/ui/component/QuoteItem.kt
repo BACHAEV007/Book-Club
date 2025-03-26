@@ -43,9 +43,3 @@ fun QuoteItem(modifier: Modifier = Modifier, quote: Quote) {
         }
     }
 }
-
-@Preview
-@Composable
-fun QuoteItemPreview() {
-    QuoteItem(quote = Quote(quote = "Я все еще жив", description = "Код да Винчи • Дэн Браун"))
-}

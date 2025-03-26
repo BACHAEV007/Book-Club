@@ -13,7 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.booksapp.ui.Paragraph
+import com.example.booksapp.data.Paragraph
 import com.example.booksapp.ui.theme.Georgia
 
 @Composable

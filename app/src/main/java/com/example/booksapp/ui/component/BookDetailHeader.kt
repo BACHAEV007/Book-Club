@@ -74,9 +74,7 @@ fun BookDetailHeader(
                 }
                 .fillMaxWidth(),
             contentScale = ContentScale.Crop
-        ) {
-            it.placeholder(R.drawable.cross_icon)
-        }
+        )
         Box(
             modifier = Modifier
                 .fillMaxWidth()

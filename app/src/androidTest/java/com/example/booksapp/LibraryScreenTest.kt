@@ -1,6 +1,8 @@
 package com.example.booksapp
 
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.test.printToLog
 import com.example.booksapp.data.Book
 import com.example.booksapp.ui.LibraryScreenContent
 import junit.framework.TestCase.assertTrue
@@ -64,11 +66,15 @@ class LibraryScreenTest {
         libraryScreen.checkBooksDisplayed(testBookList)
 
         libraryScreen.checkBookClick(0) {
-            assertTrue("onBookClick should be called", clicked)
+            assertTrue("onBookClick", clicked)
         }
         libraryScreen.checkBookClick(4) {
-            assertTrue("onBookClick should be called", clicked)
+            assertTrue("onBookClick", clicked)
         }
+
+        composeTestRule
+            .onRoot()
+            .printToLog("semantic tree")
     }
 
     @Test
@@ -78,6 +84,10 @@ class LibraryScreenTest {
         libraryScreen.checkCommonUi()
 
         libraryScreen.checkNoBooks()
+
+        composeTestRule
+            .onRoot()
+            .printToLog("semantic tree")
     }
 
     private fun launchLibraryScreen(bookList: List<Book> = testBookList) {

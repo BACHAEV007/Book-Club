@@ -1,6 +1,11 @@
 package com.example.booksapp.data
 
-data class Book(val imageUrl: String, val author: String, val description: String, val title: String)
+data class Book(
+    val imageUrl: String,
+    val author: String,
+    val description: String,
+    val title: String
+)
 
 val bookList = listOf(
     Book(

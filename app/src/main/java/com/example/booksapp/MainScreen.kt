@@ -59,7 +59,11 @@ import com.example.booksapp.ui.component.CustomBottomBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "ContextCastToActivity")
 @Composable
-fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController, isTesting: Boolean = false) {
+fun MainScreen(
+    modifier: Modifier = Modifier,
+    navController: NavHostController,
+    isTesting: Boolean = false
+) {
     var selectedIndex by remember { mutableStateOf(0) }
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
@@ -203,7 +207,8 @@ fun MainScreen(modifier: Modifier = Modifier, navController: NavHostController, 
                                 }
                             }
                         },
-                        isTesting = isTesting)
+                        isTesting = isTesting
+                    )
                 }
                 composable<LibraryScreen> {
                     LibraryScreenContent(

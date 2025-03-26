@@ -1,10 +1,10 @@
-import io.github.kakaocup.compose.node.element.KNode
 import androidx.compose.ui.test.SemanticsNodeInteractionsProvider
 import androidx.compose.ui.test.assertIsDisplayed
 import com.example.booksapp.data.Book
 import com.example.booksapp.data.Quote
 import com.example.booksapp.ui.BookmarksTestTags
 import io.github.kakaocup.compose.node.element.ComposeScreen
+import io.github.kakaocup.compose.node.element.KNode
 
 class BookmarksScreen(semanticsProvider: SemanticsNodeInteractionsProvider) :
     ComposeScreen<BookmarksScreen>(semanticsProvider = semanticsProvider) {

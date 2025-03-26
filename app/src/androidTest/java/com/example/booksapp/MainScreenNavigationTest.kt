@@ -33,7 +33,6 @@ class MainScreenNavigationTest {
             MainScreen(navController = navController, isTesting = true)
         }
         composeTestRule.waitForIdle()
-        Thread.sleep(1000)
     }
 
     @Test
