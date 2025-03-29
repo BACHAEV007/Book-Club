@@ -8,6 +8,7 @@
 
 ## 📚 Libraries and tools used
 - JetpackCompose
+- Navigation Compose
 - Material 3
 - Glide
 - Espresso, Kakao Compose
