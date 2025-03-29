@@ -1,4 +1,4 @@
-# 📜  BookClub
+# 📜  Book-Club
 
 ![platform](https://img.shields.io/badge/platform-Android-brightgreen)
 ![kotlin](https://img.shields.io/badge/kotlin-v2.1.0-purple)
@@ -10,8 +10,8 @@
 - JetpackCompose
 - Material 3
 - Glide
-- Onebone:toolbar-compose
-- Accompanist
+- Espresso, Kakao Compose
+- Robolectric
 
 ## 📱 Screenshots 
 ### Sign In Screen| Library Screen | Search Screen | Search Screen Result
