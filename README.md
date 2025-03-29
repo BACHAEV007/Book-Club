@@ -2,7 +2,6 @@
 
 ![platform](https://img.shields.io/badge/platform-Android-brightgreen)
 ![kotlin](https://img.shields.io/badge/kotlin-v2.1.0-purple)
-![minSDK](https://img.shields.io/badge/minSDK-28-red)
 
 ## ❗ WARNING
 #### Project still on development stage
@@ -10,7 +9,6 @@
 ## 📚 Libraries and tools used
 - JetpackCompose
 - Material 3
-- Coil
 - Glide
 - Onebone:toolbar-compose
 - Accompanist
